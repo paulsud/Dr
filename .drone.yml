@@ -1,0 +1,55 @@
+kind: pipeline
+type: docker
+name: go
+
+steps:
+- name: go
+  image: golang
+  commands:
+  - go version
+
+---
+kind: pipeline
+type: docker
+name: hello
+
+
+steps:
+  - name: hello
+    image: alpine
+    commands:
+        
+    - apk -U upgrade
+    - apk add openssh
+
+steps:
+  - name: hello
+    image: alpine
+    commands:
+    - echo hello world
+    - ls
+---
+
+kind: pipeline
+type: docker
+name: npm
+
+steps:
+  - name: npm
+    image: node
+    commands:
+    - npm install
+    - npm list
+    - npm install express
+    - npm list
+  
+---
+kind: pipeline
+type: docker
+name: busybox
+
+steps:
+- name: busybox
+  image: busybox
+  commands:
+  - echo "this is a busybox test"
